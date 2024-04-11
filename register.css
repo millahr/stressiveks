@@ -1,0 +1,57 @@
+/* CSS logon sijoittamiseen sivun keskelle ylös ja syöttökenttien keskittämiseen */
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    margin-top: 20px; /* Lisää tarvittaessa tyhjää tilaa ylhäältä */
+    text-align: center;
+}
+
+img {
+    width: 200px; /* Määritä logon leveys */
+    height: auto; /* Säilytä alkuperäinen kuvasuhde */
+}
+
+form {
+    width: 300px;
+    margin: 0 auto; /* Keskitä lomake */
+    text-align: left; /* Aseta tekstin suuntaus vasemmalle */
+}
+
+label {
+    display: block; /* Aseta label-elementit blokeiksi, jotta ne asettuvat pystysuoraan */
+    text-align: left; /* Aseta label-elementtien teksti vasemmalle */
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Täyttää koko leveyden */
+    padding: 8px; /* Lisää sisätilaa */
+    margin-bottom: 10px; /* Lisää välistystä kenttien välille */
+    box-sizing: border-box; /* Aseta laatikon koko sisältäen reunukset ja täyttö */
+}
+
+input[type="submit"] {
+    width: 100%; 
+    padding: 10px; 
+    margin-top: 10px; 
+    background-color: #15b9d9;
+    color: white; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    color: #15b9d9;
+    background-color: white;
+    border-style: solid; 
+}
