@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify</title>
+    <link rel="stylesheet" type="text/css" href="CSS/Modify.css">
+</head>
+<body>
+    
+<div class="navigointi-baari">
+    <img src="IMG/logo.png" alt="Logo" class="logo">
+    <a href="Home.html">Etusivu</a>
+    <a href="History.html">Historia</a>
+    <a href="Info.html">Tiedot</a>
+    <a href="#" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos
+    </a>
+</div>
+
+<h1>Tiedot</h1>
+
+<h2>Muokkaa tietojasi</h2>
+
+<div class="formi">
+    <form id="myForm" action="process-form.php" method="post" onsubmit="return redirectToNewFile()"> 
+    <!-- Tee napista toimiva-->
+            
+        <label for="van">Nimi:</label><br>
+        <br>
+        <input type="text" id="van" name="van" value=""><br>
+        <br>
+        
+        <label for="birth">Syntymäpäivä:</label><br>
+        <br>
+        <input type="date" id="birth" name="birth"><br>
+        <br>
+        
+        <label for="uud">Osoite:</label><br>
+        <br>
+        <input type="text" id="uud" name="uud" value=""><br>
+        <br>
+
+        <label for="email">Sähköposti:</label><br>
+        <br>
+        <input type="text" id="email" name="email" value=""><br>
+        <br>
+
+        <label for="phone">Puhelin numero:</label><br>
+        <br>
+        <input type="text" id="phone" name="phone" value=""><br>
+        <br>
+        
+        <br>
+        <input id="submit" type="submit" value="Tallenna"/>
+    </form> 
+</div>
+
+<script src="JS/Modify.js"></script>
+
+</body>
+</html>

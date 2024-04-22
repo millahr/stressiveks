@@ -1,0 +1,56 @@
+/* Tyyli navigointipalkille */
+.navigointi-baari {
+    background-color: #bbebf2;
+    overflow: hidden;
+    display: flex; /* Lisätään Flexbox */
+    justify-content: space-between; /* Tasainen asema */
+    height: 60px; /* Määritä navigointipalkin korkeus */
+}
+
+/* Tyyli navigointipalkin linkeille */
+.navigointi-baari a {
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Vaihda linkin väri, kun hiiri on päällä */
+.navigointi-baari a:hover {
+    background-color: #15b9d9;
+    color: white;
+}
+
+
+/* Tyyli logolle */
+.logo {
+    width: 100px; /* Määritä logon leveys */
+    height: auto; /* Säädä korkeus automaattisesti suhteessa leveyteen */
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.tiedot {
+    text-align: center;
+}
+
+button {
+    font-size: 16px;
+    padding: 10px 20px; 
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: lightblue; 
+}
+
