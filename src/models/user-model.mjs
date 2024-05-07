@@ -2,7 +2,7 @@ import promisePool from '../utils/database.mjs';
 
 const listAllUsers = async () => {
   try {
-    const sql = 'SELECT user_id, username, user_level FROM Users';
+    const sql = 'SELECT user_id, email, user_level FROM Users';
     const [rows] = await promisePool.query(sql);
     // console.log(rows);
     return rows;
@@ -34,8 +34,8 @@ const selectUserById = async (id) => {
 const insertUser = async (user, next) => {
   try {
     const sql =
-      'INSERT INTO Users (username, password, email) VALUES (?, ?, ?)';
-    const params = [user.username, user.password, user.email];
+      'INSERT INTO Users (email, password) VALUES (?, ?)';
+    const params = [user.email, user.password];
     const [result] = await promisePool.query(sql, params);
     // console.log(result);
     return {message: 'new user created', user_id: result.insertId};
@@ -50,8 +50,8 @@ const insertUser = async (user, next) => {
 const updateUserById = async (user) => {
   try {
     const sql =
-      'UPDATE Users SET username=?, password=?, email=? WHERE user_id=?';
-    const params = [user.username, user.password, user.email, user.userId];
+      'UPDATE Users SET email=?, password=? WHERE user_id=?';
+    const params = [user.email, user.password, user.userId];
     await promisePool.query(sql, params);
     const [result] = await promisePool.query(sql, params);
     console.log(result);
@@ -98,6 +98,25 @@ const selectUserByUsername = async (username) => {
   }
 };
 
+const selectUserByEmail = async (email) => {
+  try {
+    const sql = 'SELECT * FROM Users WHERE email=?';
+    const params = [email];
+    const [rows] = await promisePool.query(sql, params);
+    // console.log(rows);
+    // if nothing is found with the user id, result array is empty []
+    if (rows.length === 0) {
+      return {error: 404, message: 'user not found'};
+    }
+    // Remove password property from result
+    delete rows[0].password;
+    return rows[0];
+  } catch (error) {
+    console.error('selectUserByEmail', error);
+    return {error: 500, message: 'db error'};
+  }
+};
+
 export {
   listAllUsers,
   selectUserById,
@@ -105,4 +124,5 @@ export {
   updateUserById,
   deleteUserById,
   selectUserByUsername,
+  selectUserByEmail,
 };
