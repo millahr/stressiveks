@@ -21,7 +21,7 @@ entryRouter
     body('title').isString(),
     body('notes').optional().isString().isLength({min: 3, max: 300}),
     body('HRVData').optional().isString().isLength({min: 3, max: 300}),
-    body('mood').optional().trim().isLength({min: 3, max: 20}).isInt({min: 0, max: 9}), 
+    body('mood').optional().trim().isLength({min: 3, max: 20}), 
     validationErrorHandler,
     postEntry,
   );

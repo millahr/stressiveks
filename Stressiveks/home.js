@@ -1,15 +1,12 @@
-// haetaan nappi josta lähetetään formi ja luodaan käyttäjä
-const lisaaMerkinta = document.querySelector('.tallenna');
+import { fetchData } from './fetch.js';
+const lisaaMerkinta = document.querySelector('.submit');
 
 lisaaMerkinta.addEventListener('click', async (evt) => {
   evt.preventDefault();
   console.log('Nyt lisätään päiväkirjamerkintä');
 
   const url = 'http://127.0.0.1:3000/api/entries';
-
-  // # Create user
-  // POST http://127.0.0.1:3000/api/users
-  // content-type: application/json
+  let token = localStorage.getItem('token');
 
   const form = document.querySelector('.paivakirjamerkinta');
 
@@ -24,21 +21,25 @@ lisaaMerkinta.addEventListener('click', async (evt) => {
 
   console.log('Tiedot valideja, jatketaan');
 
+  const messageTextarea = document.querySelector('textarea[name="message"]');
+  const messageValue = messageTextarea.value;
   const selectedEmotion = form.querySelector('input[name=emotion]:checked');
   const emotion = selectedEmotion ? selectedEmotion.value : '';
+ 
 
   const data = {
-    date: form.querySelector('input[name=date]').value,
+    entry_date: form.querySelector('input[name=date]').value,
     title: form.querySelector('input[name=ots]').value,
-    text: form.querySelector('input[name=message]').value,
-    hrvData: form.querySelector('input[name=hrv]').value,
-    emotion: emotion,
+    notes: messageValue,
+    HRVData: form.querySelector('input[name=hrv]').value,
+    mood: emotion,
   };
 
   const options = {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer: ' + token,
     },
     body: JSON.stringify(data), // body data type must match "Content-Type" header
   };
