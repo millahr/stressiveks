@@ -1,4 +1,4 @@
-import './style.css';
+
 import { fetchData } from './fetch.js';
 
 
@@ -54,7 +54,7 @@ loginUser.addEventListener('click', async (evt) => {
     } else {
       alert(data.message);
       localStorage.setItem('name', data.user.username);
-      window.location.href = 'home.html';
+      window.location.href = 'Home.html';
     }
 
     logResponse('loginResponse', `localStorage set with token value: ${data.token}`);

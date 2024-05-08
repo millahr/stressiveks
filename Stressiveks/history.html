@@ -12,7 +12,6 @@
     <img src="logo.png" alt="Logo" class="logo">
     <a href="Home.html">Etusivu</a>
     <a href="History.html">Historia</a>
-    <a href="Info.html">Tiedot</a>
     <a class="btn btn-info btn-lg" onclick="redirectToNewFile()">
         <span class="glyphicon glyphicon-log-out"></span> Kirjaudu ulos
     </a>
@@ -22,34 +21,22 @@
 
 <h2>Päiväkirja ja HRV-datan historia</h2>
 
-<div class="graph">
+<table class="historia">
+    <thead>
+        <tr>
+          <th>Päivämäärä</th>
+          <th>Otsikko</th>
+          <th>Teksti</th>
+          <th>HRV-data</th>
+          <th>Tunnetila</th>
+        </tr>
+      </thead>
+    <tbody>
 
-    <img src="IMG/Graph.PNG" alt="placeholder">
-    <p>Visuaalinen graaphi viikon ajan HRV-datasta ja tunnetiloista</p>
+    </tbody>
+</table>
 
-</div>
 
-<h3>Eilinen</h3>
-
-<div class="boxA">
-
-    <p>Otsikko</p>
-    <p>Tekstiä</p>
-    <p>HRV-data</p>
-    <p>Tunnetila</p>
-
-</div>
-
-<h3>Tänään</h3>
-
-<div class="boxB">
-
-    <p>Otsikko</p>
-    <p>Tekstiä</p>
-    <p>HRV-data</p>
-    <p>Tunnetila</p>
-
-</div>
 
 <br>
 
@@ -58,6 +45,7 @@
 </div>
 
 <script src="Logout.js"></script>
+<script type="module" src="/history.js"></script>
 
 </body>
 </html>
