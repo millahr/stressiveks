@@ -7,7 +7,7 @@ Logout button bootstrap https://www.w3schools.com/bootstrap/tryit.asp?filename=t
 Rautalanka malli figmassa : https://www.figma.com/file/Pdp7xnA6xCXAPhShCiJkXY/proto?type=design&node-id=4-23&mode=design
 <br>
 Database:
-![Database ryhmä8](https://github.com/millahr/stressiveks/assets/142782522/5a650806-f616-4c9d-b2a9-0f496262ca84)
+![alt text](https://github.com/millahr/stressiveks/blob/main/Images/Database%20ryhm%C3%A48.png)
 
 
 Käyttöliittymä:
