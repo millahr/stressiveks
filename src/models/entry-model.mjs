@@ -43,7 +43,7 @@ const addEntry = async (entry, userId) => {
                (user_id, entry_date, title, notes, HRVData, mood)
                VALUES (?, ?, ?, ?, ?, ?)`;
   const params = [
-    userId,
+    entry.user_id,
     entry.entry_date,
     entry.title,
     entry.notes,

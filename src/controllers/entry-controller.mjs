@@ -28,8 +28,8 @@ const getEntryById = async (req, res, next) => {
 };
 
 const postEntry = async (req, res, next) => {
-  const userId = req.user.user_id;
-  const result = await addEntry(req.body, userId);
+  //const userId = req.user.user_id;
+  const result = await addEntry(req.body /*, userId*/);
   if (result.entry_id) {
     res.status(201);
     res.json({message: 'New entry added.', ...result});

@@ -17,6 +17,7 @@ entryRouter
   .get(authenticateToken, getEntries)
   .post(
     authenticateToken,
+    body('user_id').isInt(),
     body('entry_date').isDate(),
     body('title').isString(),
     body('notes').optional().isString().isLength({min: 3, max: 300}),
