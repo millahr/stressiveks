@@ -19,3 +19,5 @@ Ongelmat: Cubios Cloud toimii osittain eli ei ehditty saamaan sykeanturi tietoja
 <br>
 Käytetyt tutoriaalit: https://www.youtube.com/watch?v=C_vv1D5oDZ0&t=55s https://www.youtube.com/watch?v=wHspfWWn1II
 <br>
+Käytetty Matin Backend esimerkkiä: https://github.com/mattpe/hyte-server-example-24/tree/kubios-example
+<br>
