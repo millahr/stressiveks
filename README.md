@@ -12,6 +12,8 @@ Toiminnallisuudet ovat sisäänkirjautumine, uloskirjautuminen, päiväkirjamerk
 <br>
 Ongelmat: Cubios Cloud toimii osittain eli ei ehditty saamaan sykeanturi tietoja sovellukseen ja historia hakua databasesta ei saatu toimimaan sovelluksen yhteydessä. 
 <br>
+Bugit: Päiväkirjamerkintä ei kaikilla tallenna tietoja.
+<br>
 Käytetyt tutoriaalit: https://www.youtube.com/watch?v=C_vv1D5oDZ0&t=55s https://www.youtube.com/watch?v=wHspfWWn1II
 <br>
 Käytetty Matin Backend esimerkkiä: https://github.com/mattpe/hyte-server-example-24/tree/kubios-example
