@@ -2,7 +2,6 @@
 import express from 'express';
 import path from 'path';
 import {fileURLToPath} from 'url';
-import itemRouter from './routes/item-router.mjs';
 import userRouter from './routes/user-router.mjs';
 import entryRouter from './routes/entry-router.mjs';
 import cors from 'cors';
@@ -36,9 +35,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use('/docs', express.static(path.join(__dirname, '../docs')));
 
-// Test RESOURCE /items endpoints
-// (just mock data for testing, not connected to any database)
-app.use('/items', itemRouter);
 
 // bind base url (/api/entries resource) for all entry routes to entryRouter
 app.use('/api/entries', entryRouter);

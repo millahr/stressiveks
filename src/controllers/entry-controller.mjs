@@ -1,9 +1,6 @@
 import {customError} from '../middlewares/error-handler.mjs';
 import {
-  findEntryById,
   addEntry,
-  deleteEntryById,
-  updateEntryById,
   listAllEntriesByUserId,
 } from '../models/entry-model.mjs';
 
@@ -19,7 +16,7 @@ const getEntries = async (req, res, next) => {
 };
 
 const getEntryById = async (req, res, next) => {
-  const entry = await findEntryById(req.params.id, req.user.user_id);
+  const entry = await listAllEntriesByUserId(req.params.id);
   if (entry) {
     res.json(entry);
   } else {
