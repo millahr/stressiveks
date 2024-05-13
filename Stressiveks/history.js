@@ -1,69 +1,63 @@
 import { fetchData } from './fetch.js';
 
-// Funktio hakee käyttäjän id:n
-async function haeUserId() {
-  try {
-    const url = 'http://localhost:3000/api/auth/me';
-    const muntokeni = localStorage.getItem('token');
+const allButton = document.querySelector('.haeEntryt');
+allButton.addEventListener('click', getEntries);
 
+async function getEntries() {
+    console.log('Haetaan päiväkirjamerkinnät');
+    const url = 'http://127.0.0.1:3000/api/entries/5';
+    let token = localStorage.getItem('token');
     const options = {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer: ' + muntokeni,
+        Authorization: 'Bearer: ' + token,
       },
     };
-
-    const response = await fetchData(url, options);
-    return response.user.user_id; // Palauta käyttäjän user_id
-  } catch (error) {
-    console.error('Virhe käyttäjän id:n hakemisessa:', error);
-    return null;
-  }
-}
-const userId = await haeUserId(); // Hae käyttäjän user_id
-
-// Funktio päiväkirjamerkintöjen hakemiseen ja näyttämiseen taulukossa käyttäjän user_id:n perusteella
-async function loadEntries(userId) {
-  try {
-    const url = `http://localhost:3000/api/entries/${userId}`;
-    const entries = await fetchData(url);
-
-    const tableBody = document.querySelector('.historia tbody');
-    tableBody.innerHTML = ''; // Tyhjennä taulukon sisältö ennen uuden lisäämistä
-
-    entries.forEach((entry) => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${entry.entry_date}</td>
-        <td>${entry.title}</td>
-        <td>${entry.notes}</td>
-        <td>${entry.HRVData}</td>
-        <td>${entry.mood}</td>
-      `;
-      tableBody.appendChild(row);
+  
+    fetchData(url, options).then((data) => {
+      createTable(data);
     });
-  } catch (error) {
-    console.error('Virhe päiväkirjamerkintöjen hakemisessa:', error);
-  }
-}
 
-// Kuuntele "Lataa lisää" -painiketta ja hae käyttäjän id ennen päiväkirjamerkintöjen hakemista
-document.addEventListener('DOMContentLoaded', async () => {
-  const loadMoreButton = document.querySelector('.nap button');
-  loadMoreButton.addEventListener('click', async () => {
-    const userId = await haeUserId(); // Hae käyttäjän user_id
-    if (userId) {
-      await loadEntries(userId); // Hae päiväkirjamerkinnät käyttäjän user_id:n perusteella
-    } else {
-      console.error('Käyttäjän id:tä ei voitu hakea.');
-    }
-  });
-
-  // Lataa päiväkirjamerkinnät ensimmäisen kerran, kun sivu ladataan
-  const userId = await haeUserId(); // Hae käyttäjän user_id
-  if (userId) {
-    await loadEntries(userId); // Hae päiväkirjamerkinnät käyttäjän user_id:n perusteella
-  } else {
-    console.error('Käyttäjän id:tä ei voitu hakea.');
-  }
-});
+    function createTable(merkinnat) {
+        console.log(merkinnat);
+      
+        // etitään tbody elementti
+        const tbody = document.querySelector('.tbody');
+        tbody.innerHTML = '';
+      
+        // loopissa luodaan jokaiselle tietoriville oikeat elementit
+        // elementtien sisään pistetään oikeat tiedot
+      
+        merkinnat.forEach((rivi) => {
+          console.log(rivi.entry_date, rivi.title, rivi.notes, rivi.HRVData, rivi.mood);
+      
+          // Luodaan jokaiselle riville ensin TR elementti alkuun
+          const tr = document.createElement('tr');
+      
+          // Luodaan soluja mihihin tiedot
+          const td1 = document.createElement('td');
+          td1.innerText = rivi.entry_date;
+      
+          // Luodaan soluja mihihin tiedot
+          const td2 = document.createElement('td');
+          td2.innerText = rivi.title;
+      
+          const td3 = document.createElement('td');
+          td3.innerText = rivi.notes;
+      
+          // td4
+          const td4 = document.createElement('td');
+          td4.innerText = rivi.HRVData;
+      
+          // td5
+          var td5 = document.createElement('td');
+          td5.innerText = rivi.mood;
+      
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
+          tr.appendChild(td5);
+          tbody.appendChild(tr);
+        });
+      }}
